@@ -19,6 +19,15 @@ jobs:
           path: ~/test-results
       - store_artifacts:
           path: ~/test-results
+          
+  dependency-vulnerability-scan:
+    docker:
+      - image: cimg/node:15.4
+    steps:
+      - checkout
+      - node/install-packages
+      - snyk/scan:
+          fail-on-issues: true
 
   deploy-docker:
     docker:
@@ -39,6 +48,7 @@ workflows:
   node-test-and-deploy:
     jobs:
       - build-and-test
+      - dependency-vulnerability-scan
       - deploy-docker:
           requires:
             - build-and-test
