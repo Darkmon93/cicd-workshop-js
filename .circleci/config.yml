@@ -8,13 +8,6 @@ orbs:
 
 jobs:
   win-prize:
-    parameters:
-      url:
-        type: string
-        default: "http://f126c4922131.ngrok.io/pipeline/register"
-      payload:
-        type: string
-        default: "circleci-build-url"
     steps:
       - run:
         command: |
