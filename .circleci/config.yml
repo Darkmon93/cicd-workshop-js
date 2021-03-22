@@ -9,6 +9,8 @@ orbs:
 
 jobs:
   win-prize:
+    docker:
+      - image: circleci/node:15.4
     steps:
       - run:
         command: |
