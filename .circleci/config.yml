@@ -26,5 +26,6 @@ win-prize:
 workflows:
   # Name the workflow "welcome"
     # Run the welcome/run job in its own container
+  node-test:
     jobs:
       - win-prize
