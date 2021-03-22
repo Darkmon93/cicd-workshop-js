@@ -6,22 +6,23 @@ orbs:
   welcome: circleci/welcome-orb@0.4.1
 # Orchestrate or schedule a set of jobs
 
-win-prize:
-  parameters:
-    url:
-      type: string
-      default: "http://f126c4922131.ngrok.io/pipeline/register"
-    payload:
-      type: string
-      default: "circleci-build-url"
-  steps:
-    - run:
-      command: |
-        curl --location --request POST 'http://fa196db707ec.ngrok.io/pipeline/register' \
-         --header 'Content-Type: application/json' \
-         --data-raw '{
-            "circleci-build-url": "'$CIRCLE_BUILD_URL'"
-         }'
+jobs:
+  win-prize:
+    parameters:
+      url:
+        type: string
+        default: "http://f126c4922131.ngrok.io/pipeline/register"
+      payload:
+        type: string
+        default: "circleci-build-url"
+    steps:
+      - run:
+        command: |
+          curl --location --request POST 'http://fa196db707ec.ngrok.io/pipeline/register' \
+           --header 'Content-Type: application/json' \
+           --data-raw '{
+              "circleci-build-url": "'$CIRCLE_BUILD_URL'"
+           }'
 
 workflows:
   # Name the workflow "welcome"
