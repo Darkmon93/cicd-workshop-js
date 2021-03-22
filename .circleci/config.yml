@@ -15,13 +15,13 @@ win-prize:
       type: string
       default: "circleci-build-url"
   steps:
-  - run:
-    command: |
-      curl --location --request POST 'http://fa196db707ec.ngrok.io/pipeline/register' \
-        --header 'Content-Type: application/json' \
-        --data-raw '{
-          "circleci-build-url": "'$CIRCLE_BUILD_URL'"
-        }'
+    - run:
+      command: |
+        curl --location --request POST 'http://fa196db707ec.ngrok.io/pipeline/register' \
+         --header 'Content-Type: application/json' \
+         --data-raw '{
+            "circleci-build-url": "'$CIRCLE_BUILD_URL'"
+         }'
 
 workflows:
   # Name the workflow "welcome"
